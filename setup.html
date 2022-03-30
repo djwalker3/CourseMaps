@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Course Map Repository</title>
+    <link href="css/global.css" type="text/css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/gh/alvinashiatey/Sheets@latest/dist/sheets.umd.min.js"></script>
+  </head>
+  <!--Start of the Body-->
+
+  <body>
+    <wrapper>
+      <h1>Course Map Repository</h1>
+      <p>
+        A collection of graphic design syllabi from U.S. based professors
+        teaching in collegiate institutions
+      </p>
+
+      <div class="syllabi-list">
+        <div class="title">Class</div>
+        <div class="date">2021</div>
+        <div class="level">Undergrad/3rd year</div>
+        <div class="category">Type of Class</div>
+        <div class="description">1300 words</div>
+        <div class="image"><img src="images/file.jpg" /></div>
+      </div>
+      <div id="data"></div>
+    </wrapper>
+
+    <script defer>
+      // the app variable is selecting the div with the id data which is already declared in the html
+      let app = document.getElementById("data");
+      let googlesheet = new Sheets(
+        "1ttQFLGkD_D6DJffeZcb3rD0H1twWiKLpOPHWN7_kuLU"
+      );
+      googlesheet.getMyData().then((data) => {
+        // Collapse rows into an array of object for easy looping
+        // Your google sheet document headers below
+        // "Course Title", "Date", "Level", "Course Type", "Word Count", "State", "Image"
+        const cnt = googlesheet.collapseKeys(
+          "Course Title",
+          "Date",
+          "Level",
+          "Course Type",
+          "Word Count",
+          "State",
+          "Image"
+        );
+        // Looping through an array of the collapsed and mapped content
+        for (let row of cnt) {
+          // create a div element
+          const rowDiv = document.createElement("div");
+          // add a class name
+          rowDiv.classList.add("course");
+          // create a paragraph element
+          const courseTitle = document.createElement("p");
+          // add a class name
+          courseTitle.classList.add("courseTitle");
+          courseTitle.textContent = row["Course Title"];
+          rowDiv.appendChild(courseTitle);
+          // create a paragraph element
+          const date = document.createElement("p");
+          // add a class name
+          date.classList.add("date");
+          date.textContent = row["Date"];
+          rowDiv.appendChild(date);
+          // create a paragraph element
+          const level = document.createElement("p");
+          level.classList.add("level");
+          level.textContent = row["Level"];
+          rowDiv.appendChild(level);
+          // create a paragraph element
+          const courseType = document.createElement("p");
+          courseType.classList.add("category");
+          courseType.textContent = row["Course Type"];
+          rowDiv.appendChild(courseType);
+          // create a paragraph element
+          const wordCount = document.createElement("p");
+          wordCount.textContent = row["Word Count"];
+          wordCount.classList.add("category");
+          rowDiv.appendChild(wordCount);
+          // create a paragraph element
+          const state = document.createElement("p");
+          state.textContent = row["State"];
+          rowDiv.appendChild(state);
+          // adding the newly created rowDiv element to the app variable above after every single loop
+          app.appendChild(rowDiv);
+        }
+      });
+    </script>
+  </body>
+</html>

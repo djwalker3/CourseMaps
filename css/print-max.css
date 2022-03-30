@@ -1,0 +1,64 @@
+/* reset styles */
+
+body {
+	font-family: Times 'Times New Roman', Times, serif;
+	column-count: 2;
+	padding: 0px 15px 15px 15px;
+}
+
+/* style page */
+@page {
+	size: letter;
+}
+
+img.print {
+	filter: grayscale(100%);
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 70%;
+  	page-break-before: always; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+    page-break-after: avoid; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+    page-break-inside: auto; /* or 'auto' */
+    border-radius: 25px;
+}
+
+h1 {
+	font-size: 60px;
+	text-decoration: underline;
+    color: red;
+}
+p {
+	font-size: 40px;
+	line-height: 1.1em;
+    color: limegreen;
+}
+a {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+}
+/* do not print */
+
+img.no-print, h4 {
+	display: none;
+}
+/* reveal link */
+
+a[href]:after {
+	content: " ("attr(href)")";
+}
+/* break page */
+
+.break {
+	page-break-before: always;
+}
+/* intro */
+
+.container::before {
+	content: "Last updated March 30, 2020";
+}
+/* end note */
+
+.box::after {
+	content: "Please see www.mysite.com for the latest version of this information.";
+}

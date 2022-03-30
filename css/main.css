@@ -1,0 +1,46 @@
+body {
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+	background-color: black;
+	color: white;
+	padding: 0px 20px 20px 20px;
+}
+h1 {
+	color: yellow;
+}
+h2 {
+	color: magenta;
+}
+h3 {
+	color: cyan;
+}
+.container {
+	width: 100%;
+}
+img {
+	width: 100%;
+}
+a {
+	color: red;
+	text-decoration: underline;
+}
+.box {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px 2em;
+}
+.box :first-child {
+	align-self: top;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+	  background-color: lightblue;
+	}
+
+	.box {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 10px 2em;
+	}
+  }

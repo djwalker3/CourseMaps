@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Course Map Repository</title>
+    <link href="css/global2.css" type="text/css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/gh/alvinashiatey/Sheets@latest/dist/sheets.umd.min.js"></script>
+    <link
+      href="css/print-max.css"
+      media="print"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <!--Start of the Body-->
+
+  <body>
+    <wrapper>
+      <h1>Course Map Repository</h1>
+      <p>
+        A collection of graphic design syllabi from U.S. based professors
+        teaching in collegiate institutions
+      </p>
+
+      <!-- <div class="syllabi-list">
+                <div class="title">Class</div>
+                <div class="date">2021</div>
+                <div class="level">Undergrad/3rd year</div>
+                <div class="category">Type of Class</div>
+                <div class="description">1300 words</div>
+                <div class="image"><img src="images/file.jpg"/></div>
+            </div> -->
+
+      <div id="categories">
+        <a id="BW" href="#">Black and White</a>
+        <a id="CLR" href="#">Color</a>
+        <a id="UGD" href="#">Undergraduate</a>
+        <a id="GRD" href="#">Graduate</a>
+        <a id="TYP" href="#">Typography</a>
+        <a id="PKG" href="#">packaging</a>
+      </div>
+      <div id="data"></div>
+    </wrapper>
+
+    <script defer>
+      // the app variable is selecting the div with the id data which is already declared in the html
+      let app = document.getElementById("data");
+      let filterContainer = document.getElementById("categories");
+      let fltrs = [];
+      Array.from(filterContainer.children).forEach((filter) => {
+        let ftr = filter.id;
+        fltrs.push(ftr);
+      });
+      let googlesheet = new Sheets(
+        "1ttQFLGkD_D6DJffeZcb3rD0H1twWiKLpOPHWN7_kuLU"
+      );
+      googlesheet.getMyData().then((data) => {
+        // Collapse rows into an array of object for easy looping
+        // Your google sheet document headers below
+        // "Course Title", "Date", "Level", "Course Type", "Word Count", "State", "Image", "link"
+        const cnt = googlesheet.collapseKeys(
+          "Course Title",
+          "Date",
+          "Level",
+          "Course Type",
+          "Word Count",
+          "State",
+          "Image",
+          "link"
+        );
+        // Looping through an array of the collapsed and mapped content
+        let rowDivArray = [];
+        for (let row of cnt) {
+          // create a div element
+          const rowDiv = document.createElement("div");
+          // add a class name
+          rowDiv.classList.add("course");
+          // create a paragraph element
+          const titleLink = document.createElement("a");
+          const courseTitle = document.createElement("p");
+          // add a class name
+          courseTitle.classList.add("courseTitle");
+          courseTitle.textContent = row["Course Title"];
+          titleLink.appendChild(courseTitle);
+          row["link"] !== "" ? (titleLink.href = row["link"]) : null;
+          titleLink.target = "_blank";
+          rowDiv.appendChild(titleLink);
+          // create a paragraph element
+          const date = document.createElement("p");
+          // add a class name
+          date.classList.add("date");
+          date.textContent = row["Date"];
+          rowDiv.appendChild(date);
+          // create a paragraph element
+          const level = document.createElement("p");
+          level.classList.add("level");
+          level.textContent = row["Level"];
+          rowDiv.appendChild(level);
+          // create a paragraph element
+          const courseType = document.createElement("p");
+          courseType.classList.add("category");
+          courseType.textContent = row["Course Type"];
+          rowDiv.appendChild(courseType);
+          // create a paragraph element
+          const wordCount = document.createElement("p");
+          wordCount.textContent = row["Word Count"];
+          wordCount.classList.add("category");
+          rowDiv.appendChild(wordCount);
+          // create a paragraph element
+          const state = document.createElement("p");
+          state.classList.add("state");
+          state.textContent = row["State"];
+          rowDiv.appendChild(state);
+          // create a paragraph element
+
+          const imageLink = document.createElement("a");
+          const image = document.createElement("img");
+          if (row["Image"] !== "") {
+            image.classList.add("picture");
+            image.setAttribute("src", row["Image"]);
+            let chk = checkFilterName(row["Image"]);
+            if (chk) {
+              rowDiv.setAttribute("data-filter", chk.join(","));
+            }
+            imageLink.appendChild(image);
+            row["link"] !== "" ? (imageLink.href = row["link"]) : null;
+            imageLink.target = "_blank";
+            rowDiv.appendChild(imageLink);
+          }
+          rowDivArray.push(rowDiv);
+          // adding the newly created rowDiv element to the app variable above after every single loop
+        }
+        rowDivArray.forEach((r) => app.appendChild(r));
+
+        Array.from(filterContainer.children).forEach((filter) => {
+          let ftr = filter.id;
+          filter.addEventListener("click", function (event) {
+            event.preventDefault();
+            rowDivArray.forEach((course) => {
+              if (course.hasAttribute("data-filter")) {
+                let attrArray = course.getAttribute("data-filter").split(",");
+                if (attrArray.includes(ftr)) {
+                  console.log("has it");
+                  course.classList.remove("hidden");
+                } else {
+                  course.classList.add("hidden");
+                }
+              } else {
+                course.classList.add("hidden");
+              }
+            });
+          });
+        });
+      });
+
+      function checkFilterName(imageName) {
+        let result = {
+          exist: false,
+          data: [],
+        };
+        let nameArray = imageName.replace(/\.[^/.]+$/, "").split("-");
+        fltrs.forEach((f) => {
+          if (nameArray.includes(f)) {
+            result.exist = true;
+            result.data.push(f);
+          } else {
+            result.exist = false;
+          }
+        });
+        return result.data.length ? result.data : false;
+      }
+    </script>
+  </body>
+</html>
