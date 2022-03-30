@@ -20,7 +20,8 @@ h1 {
   margin-top: 30px;
 }
 #categories a {
-  display: block;
+  display: inline;
+  margin-right: 50px;
 }
 .syllabi-list {
   height: auto;
