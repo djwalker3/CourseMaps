@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: bisque;
+  background-image: url(../images/bkg_text.png);
+  /*-- margin: 50px 50px 100px 50px; --*/
+  padding-left: 10px;
+  padding-top: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  /* border-left: 1px #000 solid ; */
+}
+h1 {
+  color: rgb(255, 255, 255);
+  font-size: 72px;
+  font-family: "Exo", sans-serif;
+  text-transform: uppercase;
+  background-color: black;
+}
+#data {
+  margin-top: 25px;
+}
+#categories {
+  margin-top: 30px;
+}
+#categories a {
+  display: inline-block;
+  margin-right: 20px;
+}
+.syllabi-list {
+  height: auto;
+  /*border-top: 1px #000 solid ;*/
+
+  margin: 20px 0;
+}
+.title {
+  width: 200px;
+  font-size: 24px;
+  float: ;
+  /*border-right: 1px #000 solid ;*/
+  padding-left: 20px;
+}
+.date {
+  width: 100px;
+  float: ;
+  /*border-right: 1px #000 solid ;*/
+  padding-left: 20px;
+  font-size: 12px;
+}
+.level {
+  width: 150px;
+  float: ;
+  /*border-right: 1px #000 solid ;*/
+  padding-left: 20px;
+}
+.category {
+  width: 150px;
+  float: ;
+  /*border-right: 1px #000 solid ;*/
+  padding-left: 20px;
+  font-size: 12px;
+}
+.description {
+  width: 150px;
+  float: ;
+  /*border-right: 1px #000 solid ;*/
+  padding-left: 20px;
+  font-size: 12px;
+}
+.state {
+  width: 150px;
+  float: ;
+  /* border-right: 1px #000 solid ;*/
+  padding-left: 20px;
+  padding-bottom: 25px;
+  font-size: 12px;
+}
+.image {
+  width: 200px;
+  float: ;
+  /* border-right: 1px #000 solid ; */
+  padding-left: 20px;
+}
+
+.course {
+  width: 250px;
+  height: 500px;
+  /* display: flex;
+    justify-content: space-between; */
+  border-top: 1px #000 solid;
+  padding: 10px 0 0 0;
+  float: left;
+}
+
+.courseTitle {
+  font-weight: bold;
+  width: 200px;
+  float: ;
+  /* border-right: 1px #000 solid ; */
+  padding-left: 20px;
+}
+.picture {
+  width: 250px;
+}
+
+.hidden {
+  display: none;
+}
