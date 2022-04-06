@@ -5,6 +5,7 @@
 body {
   background-color: bisque;
   background-image: url(../images/bkg_text.png);
+  background-position: fixed;
   /*-- margin: 50px 50px 100px 50px; --*/
   padding-left: 0px;
   padding-top: 0;
