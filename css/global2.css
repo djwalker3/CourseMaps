@@ -30,7 +30,7 @@ wrapper p {
 }
 #categories a {
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 10px;
   background-color: white;
 }
 .syllabi-list {
@@ -104,6 +104,16 @@ wrapper p {
   float: ;
   /* border-right: 1px #000 solid ; */
   padding-left: 20px;
+}
+.courseTitle a {
+  font-weight: bold;
+  width: 200px;
+  float: ;
+  /* border-right: 1px #000 solid ; */
+  padding-left: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: magenta;
 }
 .picture {
   width: 250px;
