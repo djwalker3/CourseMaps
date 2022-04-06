@@ -105,6 +105,7 @@ wrapper p {
   float: ;
   /* border-right: 1px #000 solid ; */
   padding-left: 20px;
+  text-transform: uppercase;
 }
 .courseTitle a {
   font-weight: bold;
