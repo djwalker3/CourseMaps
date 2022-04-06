@@ -1,62 +1,63 @@
 /* reset styles */
 
 body {
-	font-family: Times, serif;
-	column-count: 2;
-	padding: 0px 15px 15px 15px;
+  font-family: Times, serif;
+  column-count: 2;
+  padding: 0px 15px 15px 15px;
 }
 
 /* style page */
 @page {
-	size: letter;
+  size: letter;
 }
 
 img.print {
-	filter: grayscale(100%);
-  	display: block;
-  	margin-left: auto;
-  	margin-right: auto;
-  	width: 70%;
-  	page-break-before: always; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
-    page-break-after: avoid; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
-    page-break-inside: auto; /* or 'auto' */
-    border-radius: 25px;
+  filter: grayscale(100%);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  page-break-before: always; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+  page-break-after: avoid; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+  page-break-inside: auto; /* or 'auto' */
+  border-radius: 25px;
 }
 
 h1 {
-	font-size: 60px;
-	text-decoration: none;
+  font-size: 60px;
+  text-decoration: none;
 }
 p {
-	font-size: 25px;
-	line-height: 1.1em;
+  font-size: 25px;
+  line-height: 1.1em;
 }
 a {
-	text-decoration: none;
-	color: black;
+  text-decoration: none;
+  color: black;
 }
 /* do not print */
 
-img.no-print, h4 {
-	display: none;
+img.no-print,
+h4 {
+  display: none;
 }
 /* reveal link */
 
 a[href]:after {
-	content: " ("attr(href)")";
+  content: " (" attr(href) ")";
 }
 /* break page */
 
 .break {
-	page-break-before: always;
+  page-break-before: always;
 }
 /* intro */
 
 .container::before {
-	content: "Last updated March 30, 2020";
+  content: "Last updated March 30, 2020";
 }
 /* end note */
 
 .box::after {
-	content: "Please see www.mysite.com for the latest version of this information.";
+  content: "Please see https://djwalker3.github.io/CourseMaps/ for the latest version of this information.";
 }
