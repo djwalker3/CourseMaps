@@ -18,6 +18,10 @@ h1 {
   text-transform: uppercase;
   background-color: black;
 }
+wrapper p {
+  color: white;
+  background-color: black;
+}
 #data {
   margin-top: 25px;
 }
