@@ -4,8 +4,8 @@
 }
 body {
   background-color: rgb(203, 255, 196);
-  background-image: url(../images/bkg_text.png);
-  background-position: fixed;
+  background-image: url("../images/bkg_text.png");
+  background-attachment: fixed;
   /*-- margin: 50px 50px 100px 50px; --*/
   padding-left: 0px;
   padding-top: 0;
