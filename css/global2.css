@@ -3,7 +3,7 @@
   padding: 0;
 }
 body {
-  background-color: bisque;
+  background-color: rgb(203, 255, 196);
   background-image: url(../images/bkg_text.png);
   background-position: fixed;
   /*-- margin: 50px 50px 100px 50px; --*/
